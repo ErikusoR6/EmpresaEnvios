@@ -51,6 +51,7 @@ public class Paquete {
      */
     public double calcularVolumen() {
         // TODO (lee la decisión de diseño del enunciado)
+        // TODO Decidi calcular el volumen aquí porque no forma parte de las dimensiones del paquete
         double volumen;
 
         volumen = dimension.getLargo() * dimension.getAncho() * dimension.getAlto();
@@ -81,6 +82,6 @@ public class Paquete {
      */
     public String toString() {
         // TODO
-        return dimension.toString() + " | " + peso + "kg" + " (facturable "+ calcularPesoFacturable() + " kg)";
+        return dimension.toString() + " | " + peso + " kg" + " (facturable "+ calcularPesoFacturable() + " kg)";
     }
 }

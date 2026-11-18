@@ -8,7 +8,8 @@
  */
 public class Envio {
     // TODO constante de clase MAX_PAQUETES (ver enunciado)
-    public static final int MAX_PAQUETES = 3;
+    // TODO lo hago private porque la unica clase interesada en saber cuantos paquetes hay es la de envio
+    private static final int MAX_PAQUETES = 3;
 
     // TODO atributos: código de seguimiento, código postal y tres paquetes
     private String codigoSegimiento;
@@ -185,9 +186,6 @@ public class Envio {
      */
     public String toString() {
         // TODO
-        if (paquete1 == null){
-            return "no existe envio";
-        }
         if (paquete3 == null && paquete2 != null){
             return "Envío "+codigoSegimiento +" -> CP "+ codigoPostal +" ("+getNumeroPaquetes()+" paquete/s)\n" +
                     "  1. "+paquete1+"\n" +
