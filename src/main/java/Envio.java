@@ -4,7 +4,7 @@
  *
  * Ninguno de los métodos de esta clase escribe en pantalla.
  *
- * @author
+ * @author Erik Dafonte Da concepcion
  */
 public class Envio {
     // TODO constante de clase MAX_PAQUETES (ver enunciado)
@@ -185,22 +185,25 @@ public class Envio {
      */
     public String toString() {
         // TODO
-        if (paquete3 == null){
+        if (paquete1 == null){
+            return "no existe envio";
+        }
+        if (paquete3 == null && paquete2 != null){
             return "Envío "+codigoSegimiento +" -> CP "+ codigoPostal +" ("+getNumeroPaquetes()+" paquete/s)\n" +
                     "  1. "+paquete1+"\n" +
                     "  2. "+paquete2+"\n" +
-                    "  Peso real: "+calcularPesoReal() +"kg | "+ "Peso Facturable: "+ calcularPesoFacturable()+" kg";
+                    "  Peso real: "+calcularPesoReal() +" kg | "+ "Peso facturable: "+ calcularPesoFacturable()+" kg";
         }
-        if (paquete2 == null){
+        if (paquete2 == null && paquete3 == null){
             return "Envío "+codigoSegimiento +" -> CP "+ codigoPostal +" ("+getNumeroPaquetes()+" paquete/s)\n" +
                     "  1. "+paquete1+"\n" +
-                    "  Peso real: "+calcularPesoReal() +"kg | "+ "Peso Facturable: "+ calcularPesoFacturable()+" kg";
+                    "  Peso real: "+calcularPesoReal() +" kg | "+ "Peso facturable: "+ calcularPesoFacturable()+" kg";
         }
             return "Envío "+codigoSegimiento +" -> CP "+ codigoPostal +" ("+getNumeroPaquetes()+" paquete/s)\n" +
                     "  1. "+paquete1+"\n" +
                     "  2. "+paquete2+"\n" +
                     "  3. "+paquete3+"\n" +
-                    "  Peso real: "+calcularPesoReal() +"kg | "+ "Peso Facturable: "+ calcularPesoFacturable()+" kg";
+                    "  Peso real: "+calcularPesoReal() +" kg | "+ "Peso facturable: "+ calcularPesoFacturable()+" kg";
 
         }
 
