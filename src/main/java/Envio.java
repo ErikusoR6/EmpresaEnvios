@@ -36,7 +36,7 @@ public class Envio {
 
     public String getCodigoPostal() {
         // TODO
-        return codigoSegimiento;
+        return codigoPostal;
     }
 
     /**
@@ -160,22 +160,24 @@ public class Envio {
      */
     public Paquete getPaqueteMasPesado() {
         // TODO
-        if (paquete1.getPeso() > paquete2.getPeso() && paquete1.getPeso() > paquete3.getPeso()){
-            return paquete1;
+        Paquete paqueteMasPesado;
+        if (paquete1 == null){
+            return null;
+        }else {
+            paqueteMasPesado = paquete1;
         }
-        if (paquete2.getPeso() > paquete1.getPeso() && paquete2.getPeso() > paquete3.getPeso()){
-            return paquete2;
+        if (paquete2 == null){
+            return paqueteMasPesado;
+        } else if (paquete2.getPeso() > paqueteMasPesado.getPeso()) {
+            paqueteMasPesado = paquete2;
         }
-        if (paquete3.getPeso() > paquete2.getPeso() && paquete3.getPeso() > paquete1.getPeso()){
-            return paquete3;
+        if (paquete3 == null){
+            return paqueteMasPesado;
+        } else if (paquete3.getPeso() > paqueteMasPesado.getPeso()) {
+            paqueteMasPesado = paquete3;
         }
-        if (paquete1.getPeso() == paquete2.getPeso() || paquete1.getPeso() == paquete3.getPeso()){
-            return paquete1;
-        }
-        if (paquete2.getPeso() == paquete3.getPeso()){
-            return paquete2;
-        }
-        return null;
+
+        return paqueteMasPesado;
     }
 
     /**

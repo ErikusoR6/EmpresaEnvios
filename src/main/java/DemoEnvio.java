@@ -21,8 +21,8 @@ public class DemoEnvio {
         System.out.println(envio);
         separador();
 
-        boolean anadido = envio.addPaquete(20, 20, 20, 9);
-        System.out.println("¿Se añade el tercer paquete? " + anadido);
+     boolean anadido = envio.addPaquete(20, 20, 20, 9);
+       System.out.println("¿Se añade el tercer paquete? " + anadido);
         anadido = envio.addPaquete(10, 10, 10, 1);
         System.out.println("¿Se añade un cuarto paquete? " + anadido);
         System.out.println("¿Envío completo? " + envio.estaCompleto());
