@@ -77,17 +77,17 @@ public class Envio {
      */
     public boolean addPaquete(Paquete paquete) {
         // TODO
-        if (estaCompleto() && paquete1 != null){
+        if (!estaCompleto() && paquete1 == null){
             this.paquete1 = paquete;
-            System.out.println("hola");
+            return true;
         }
-        if (estaCompleto()&& paquete2 != null){
+        if (!estaCompleto()&& paquete2 == null){
             this.paquete2 = paquete;
-            System.out.println("hola");
+            return true;
         }
-        if (estaCompleto()&& paquete3 != null){
+        if (!estaCompleto()&& paquete3 == null){
             this.paquete3 = paquete;
-            System.out.println("hola");
+            return true;
         }
         return false;
     }
@@ -99,14 +99,17 @@ public class Envio {
      */
     public boolean addPaquete(double alto, double ancho, double largo, double peso) {
         // TODO
-        if (estaCompleto() && paquete1 != null){
+        if (!estaCompleto() && paquete1 == null){
             this.paquete1 = new Paquete(alto, ancho, largo, peso);
+            return true;
         }
-        if (estaCompleto()&& paquete2 != null){
+        if (!estaCompleto()&& paquete2 == null){
             this.paquete2 = new Paquete(alto, ancho, largo, peso);
+            return true;
         }
-        if (estaCompleto()&& paquete3 != null){
+        if (!estaCompleto()&& paquete3 == null){
             this.paquete3 = new Paquete(alto, ancho, largo, peso);
+            return true;
         }
         return false;
     }
@@ -119,6 +122,7 @@ public class Envio {
         double pesoReal = 0;
         if (paquete1 != null){
             pesoReal += paquete1.getPeso();
+
         }
         if (paquete2 != null){
             pesoReal += paquete2.getPeso();
@@ -147,7 +151,7 @@ public class Envio {
         if (paquete3 != null){
             pesoFacturable += paquete3.calcularPesoFacturable();
         }
-        return pesoFacturable;
+        return Math.ceil(pesoFacturable);
     }
 
     /**
@@ -156,6 +160,21 @@ public class Envio {
      */
     public Paquete getPaqueteMasPesado() {
         // TODO
+        if (paquete1.getPeso() > paquete2.getPeso() && paquete1.getPeso() > paquete3.getPeso()){
+            return paquete1;
+        }
+        if (paquete2.getPeso() > paquete1.getPeso() && paquete2.getPeso() > paquete3.getPeso()){
+            return paquete2;
+        }
+        if (paquete3.getPeso() > paquete2.getPeso() && paquete3.getPeso() > paquete1.getPeso()){
+            return paquete3;
+        }
+        if (paquete1.getPeso() == paquete2.getPeso() || paquete1.getPeso() == paquete3.getPeso()){
+            return paquete1;
+        }
+        if (paquete2.getPeso() == paquete3.getPeso()){
+            return paquete2;
+        }
         return null;
     }
 
@@ -164,9 +183,23 @@ public class Envio {
      */
     public String toString() {
         // TODO
-        return "Envío "+codigoSegimiento +" -> CP 36202 ("+getNumeroPaquetes()+" paquete/s)\n" +
-                "  1. 40.0 x 30.0 x 50.0 cm | 8.0 kg (facturable 12.0 kg)\n" +
-                "  2. 10.0 x 20.0 x 30.0 cm | 2.5 kg (facturable 2.5 kg)\n" +
-                "  Peso real: "+calcularPesoReal() +" | "+ "Peso Facturable: "+ calcularPesoFacturable();
-    }
+        if (paquete3 == null){
+            return "Envío "+codigoSegimiento +" -> CP "+ codigoPostal +" ("+getNumeroPaquetes()+" paquete/s)\n" +
+                    "  1. "+paquete1+"\n" +
+                    "  2. "+paquete2+"\n" +
+                    "  Peso real: "+calcularPesoReal() +"kg | "+ "Peso Facturable: "+ calcularPesoFacturable()+" kg";
+        }
+        if (paquete2 == null){
+            return "Envío "+codigoSegimiento +" -> CP "+ codigoPostal +" ("+getNumeroPaquetes()+" paquete/s)\n" +
+                    "  1. "+paquete1+"\n" +
+                    "  Peso real: "+calcularPesoReal() +"kg | "+ "Peso Facturable: "+ calcularPesoFacturable()+" kg";
+        }
+            return "Envío "+codigoSegimiento +" -> CP "+ codigoPostal +" ("+getNumeroPaquetes()+" paquete/s)\n" +
+                    "  1. "+paquete1+"\n" +
+                    "  2. "+paquete2+"\n" +
+                    "  3. "+paquete3+"\n" +
+                    "  Peso real: "+calcularPesoReal() +"kg | "+ "Peso Facturable: "+ calcularPesoFacturable()+" kg";
+
+        }
+
 }
